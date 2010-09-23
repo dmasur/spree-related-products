@@ -1,0 +1,10 @@
+<% unless @product.related_products.empty? %>
+  <div>
+    <%= t("customers_who_bought_this_item_also_bought") %>
+    <ul>
+      <% @product.related_products.each do |related_product| %>
+        <li><%= link_to related_product.name, related_product %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
