@@ -1,5 +1,4 @@
 module Spree::RelatedProducts::Product
-
   def self.included(target)
     target.class_eval do
       has_many :product_relations
