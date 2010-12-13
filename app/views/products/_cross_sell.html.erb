@@ -2,8 +2,17 @@
   <div>
     <%= t("customers_who_bought_this_item_also_bought") %>
     <ul>
-      <% @product.related_products.each do |related_product| %>
-        <li><%= link_to related_product.name, related_product %></li>
+      <% if @product.related_products.any? %>
+        <ul class="product-listing">
+          <% @product.related_products.each do |product| %>
+            <% if Spree::Config[:show_zero_stock_products] || product.has_stock? %>
+              <li id="product_<%= product.id %>">
+                <%= link_to small_image(product), product %>
+                <%= link_to raw(product.name + " <span class='price selling'>#{product_price(product)}</span>"), product, :class => 'info' %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
       <% end %>
     </ul>
   </div>

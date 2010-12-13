@@ -1,3 +1,3 @@
 class SpreeRelatedProductsHooks < Spree::ThemeSupport::HookListener
-  insert_after :product_description, 'products/cross_sell'
+  insert_after :product_properties, 'products/cross_sell'
 end
